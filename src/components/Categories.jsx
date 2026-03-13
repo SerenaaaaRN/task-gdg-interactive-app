@@ -8,8 +8,8 @@ const Categories = () => {
   const colors = ["bg-[#aedae6]", "bg-[#fff6c9]", "bg-[#fddbdb]"];
 
   return (
-    <section className="max-padd-container pt-16">
-      <Title title1={"Category"} title2={"List"} titleStyles={"pb-6"} paraStyles={"hiden"} />
+    <section className="max-padd-container pt-16 pb-6">
+      <Title title1={"Category"} title2={"List"} titleStyles={"pb-10"} paraStyles={"hidden"} />
 
       <div className="flex gap-9 flex-wrap">
         {categories.map((cat, inx) => (
