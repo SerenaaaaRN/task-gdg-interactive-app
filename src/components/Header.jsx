@@ -1,22 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import logoImg from "../assets/logo.png";
 import userImg from "../assets/user.png";
 import Navbar from "./Navbar";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
 import Container from "./ui/Container";
-
-import { useContext, useState } from "react";
 import { FaBars, FaSearch } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { RiUserLine } from "react-icons/ri";
-import { ShopContext } from "../context/ShopContext";
+import { useShop } from "../context/ShopContext";
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const {navigate, user, setUser} = useContext(ShopContext);
+  // useShop replaces direct useContext(ShopContext). navigate comes from context,
+  // so useNavigate from react-router-dom is no longer needed here.
+  const { navigate, user, setUser } = useShop();
 
+  // Rule 5.8: Put interaction logic in event handlers, not effects.
   const toggleMenu = () => setMenuOpened((prev) => !prev);
 
   return (
@@ -31,7 +33,7 @@ const Header = () => {
         </Link>
       </div>
 
-      {/* navbar untuk mobile */}
+      {/* navbar */}
       <div className="flex-1">
         <Navbar
           setMenuOpened={setMenuOpened}
@@ -65,7 +67,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* menu toggle */}
+        {/* mobile menu toggle */}
         <>
           {menuOpened ? (
             <FaBarsStaggered onClick={toggleMenu} className="lg:hidden cursor-pointer text-xl" />
@@ -105,7 +107,9 @@ const Header = () => {
             <li onClick={() => navigate("/my-orders")} className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer">
               Orders
             </li>
-            <li className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer"></li>
+            <li onClick={() => setUser(null)} className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer">
+              Logout
+            </li>
           </ul>
         )}
       </div>

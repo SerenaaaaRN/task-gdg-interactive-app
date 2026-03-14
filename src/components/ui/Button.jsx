@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Button = ({ children, variant = 'primary', size = 'md', className = '', ...props }) => {
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-full transition-colors duration-200 cursor-pointer';
   

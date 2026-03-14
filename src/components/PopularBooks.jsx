@@ -1,19 +1,15 @@
-import { useContext, useState, useEffect } from "react";
-import { ShopContext } from "../context/ShopContext";
-import Title from "./Title";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import Title from "./Title";
 import Item from "./Item";
 import Container from "./ui/Container";
+import { useShop } from "../context/ShopContext";
 
 const PopularBooks = () => {
-  const [popularBooks, setPopularBooks] = useState([]);
-  const { books } = useContext(ShopContext);
-
-  useEffect(() => {
-    // keeping original behavior
-  }, [books]);
+  // Rule 5.1: popularBooks is derived state, pre-computed in context via useMemo.
+  // Removed the dead useEffect (empty body) and unused useState.
+  const { popularBooks } = useShop();
 
   return (
     <Container className="py-16">
@@ -35,7 +31,7 @@ const PopularBooks = () => {
           modules={[Autoplay]}
           className="min-h-80"
         >
-          {books.map((book) => (
+          {popularBooks.map((book) => (
             <SwiperSlide key={book._id}>
               <Item book={book} />
             </SwiperSlide>

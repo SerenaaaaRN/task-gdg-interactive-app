@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { ShopContext } from "../context/ShopContext";
-import Title from "./Title";
 import { TbShoppingBagPlus } from "react-icons/tb";
 import featuredBooksImg from "../assets/featured-books.png";
+import Title from "./Title";
 import Container from "./ui/Container";
 import Button from "./ui/Button";
+import { useShop } from "../context/ShopContext";
 
 const FeaturedBooks = () => {
-  const { books, currency } = useContext(ShopContext);
+  const { books, currency } = useShop();
+  // Rule 5.1: Derive book during rendering, no state needed.
   const book = books[21];
 
   return (
@@ -32,27 +32,14 @@ const FeaturedBooks = () => {
               </div>
               <div className="flex items-center gap-3 mt-4">
                 <h4 className="text-xl font-bold text-[var(--color-dark-surface)]">
-                  {currency}
-                  {book?.offerPrice}
+                  {currency}{book?.offerPrice}
                 </h4>
-                <p className="text-[var(--color-text-muted)] line-through">
-                  {currency}
-                  {book?.price}.00
-                </p>
               </div>
               <div className="mt-4 text-[var(--color-text-muted)] text-sm space-y-1">
-                <p>
-                  <span className="font-medium text-[var(--color-text-main)]">Published: </span>2023
-                </p>
-                <p>
-                  <span className="font-medium text-[var(--color-text-main)]">Pages: </span>300
-                </p>
-                <p>
-                  <span className="font-medium text-[var(--color-text-main)]">Language: </span>English
-                </p>
-                <p>
-                  <span className="font-medium text-[var(--color-text-main)]">Stock: </span>In Stock
-                </p>
+                <p><span className="font-medium text-[var(--color-text-main)]">Published: </span>2023</p>
+                <p><span className="font-medium text-[var(--color-text-main)]">Pages: </span>300</p>
+                <p><span className="font-medium text-[var(--color-text-main)]">Language: </span>English</p>
+                <p><span className="font-medium text-[var(--color-text-main)]">Stock: </span>In Stock</p>
               </div>
               <p className="mt-4 text-[var(--color-text-muted)] text-sm line-clamp-3 leading-relaxed">{book?.description}</p>
               <Button variant="primary" className="mt-6 w-fit flex items-center gap-2">

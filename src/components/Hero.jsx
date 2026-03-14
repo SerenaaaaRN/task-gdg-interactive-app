@@ -4,24 +4,13 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useContext, useEffect, useState } from "react";
+import "swiper/css";
 import Item from "./Item";
 import Container from "./ui/Container";
-
-import "swiper/css";
-import { ShopContext } from "../context/ShopContext";
+import { useShop } from "../context/ShopContext";
 
 const Hero = () => {
-  const [popularBooks, setPopularBooks] = useState([]);
-  const { books } = useContext(ShopContext);
-
-  //effect untuk ambil popularBooks
-  useEffect(() => {
-    if (books && books.length > 0) {
-      const data = books.filter((item) => item.popular);
-      setPopularBooks(data.slice(0, 6));
-    }
-  }, [books]);
+  const { popularBooks } = useShop();
 
   return (
     <Container className="flex flex-col lg:flex-row gap-6 h-auto lg:h-168 mt-24">
@@ -31,9 +20,7 @@ const Hero = () => {
       >
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10 p-8 lg:p-16 flex flex-col h-full justify-center">
-          <h3 className="text-xl lg:text-2xl text-accent font-medium tracking-wide">
-            Explore Books You'll Love
-          </h3>
+          <h3 className="text-xl lg:text-2xl text-accent font-medium tracking-wide">Explore Books You'll Love</h3>
           <h1 className="text-5xl lg:text-7xl max-w-200 font-bold leading-tight mt-2 text-gray-900">
             Find Your Next Book
           </h1>

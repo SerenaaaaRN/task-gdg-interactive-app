@@ -1,19 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import Title from "./Title";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { ShopContext } from "../context/ShopContext";
+import Title from "./Title";
 import Item from "./Item";
 import Container from "./ui/Container";
+import { useShop } from "../context/ShopContext";
 
 const NewArrivals = () => {
-  const [newArrivals, setNewArrivals] = useState([]);
-  const { books } = useContext(ShopContext);
-
-  useEffect(() => {
-    setNewArrivals(books.slice(0, 6));
-  }, [books]);
+  const { newArrivals } = useShop();
 
   return (
     <Container className="py-16">

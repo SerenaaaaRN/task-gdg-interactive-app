@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { TbShoppingBagPlus } from "react-icons/tb";
-import { ShopContext } from "../context/ShopContext";
 import Card from "./ui/Card";
+import { useShop } from "../context/ShopContext";
 
 const Item = ({ book, fromHero }) => {
-  const { navigate, currency } = useContext(ShopContext);
+  const { navigate, currency } = useShop();
 
   return book ? (
     <Card className={fromHero ? "bg-[var(--color-primary)] border-transparent" : "m-2"}>
@@ -21,7 +20,10 @@ const Item = ({ book, fromHero }) => {
         </div>
         <div className="flex justify-between items-end gap-2 mt-auto">
           <p className="line-clamp-2 text-sm text-[var(--color-text-muted)] leading-relaxed">{book.description}</p>
-          <button className="text-[var(--color-text-main)] hover:text-white transition-colors p-2.5 bg-[var(--color-secondary)] hover:bg-[var(--color-dark-surface)] rounded-full shrink-0">
+          <button
+            onClick={() => navigate(`/shop/${book.category.toLowerCase()}/${book._id}`)}
+            className="text-[var(--color-text-main)] hover:text-white transition-colors p-2.5 bg-[var(--color-secondary)] hover:bg-[var(--color-dark-surface)] rounded-full shrink-0"
+          >
             <TbShoppingBagPlus className="text-[22px]" />
           </button>
         </div>
