@@ -1,12 +1,12 @@
 import bg from "../../assets/bg.png";
 import bgHero from "../../assets/bg-hero.png";
-import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { useShop } from "../../hooks/useShop";
 import Container from "../ui/Container";
 import Item from "../ui/Item";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   const { popularBooks } = useShop();
@@ -34,7 +34,7 @@ const Hero = () => {
               className="bg-dark-surface text-dark-text text-sm font-medium pl-6 pr-2 py-2 rounded-full flex items-center justify-center gap-x-4 group hover:opacity-90 transition-all"
             >
               Check our latest collection
-              <FaArrowRight className="bg-white text-dark-surface rounded-full h-8 w-8 p-2 group-hover:scale-110 transition-transform duration-300" />
+              <ArrowRight className="bg-white text-dark-surface rounded-full h-8 w-8 p-2 group-hover:scale-110 transition-transform duration-300" />
             </Link>
           </div>
         </div>

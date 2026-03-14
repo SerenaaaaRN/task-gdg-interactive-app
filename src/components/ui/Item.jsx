@@ -1,7 +1,7 @@
-import { TbShoppingBagPlus } from "react-icons/tb";
 import Card from "./Card";
 import { useNavigate } from "react-router-dom";
 import { useShop } from "../../hooks/useShop";
+import { ShoppingBag } from "lucide-react";
 
 const Item = ({ book, variant = "default" }) => {
   const { currency } = useShop();
@@ -11,7 +11,7 @@ const Item = ({ book, variant = "default" }) => {
 
   return book ? (
     <Card className={cardStyles}>
-      <div className="overflow-hidden bg-border rounded-t-2xl flex items-center justify-center p-4 h-70">
+      <div className="overflow-hidden bg-border rounded-lg flex items-center justify-center p-4 h-70">
         <img src={book.image} alt={book.name} className="object-contain h-full mix-blend-multiply drop-shadow-sm" />
       </div>
       <div className="p-5 flex flex-col gap-3">
@@ -28,7 +28,7 @@ const Item = ({ book, variant = "default" }) => {
             onClick={() => navigate(`/shop/${book.category.toLowerCase()}/${book._id}`)}
             className="text-text-main hover:text-white transition-colors p-2.5 bg-secondary hover:bg-dark-surface rounded-full shrink-0"
           >
-            <TbShoppingBagPlus className="text-[22px]" />
+            <ShoppingBag className="text-[22px]" />
           </button>
         </div>
       </div>

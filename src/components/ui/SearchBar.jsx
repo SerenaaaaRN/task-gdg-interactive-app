@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
 import Input from "./Input";
 import { useShop } from "../../hooks/useShop";
+import { Search } from "lucide-react";
 
 const SearchBar = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -25,7 +25,7 @@ const SearchBar = () => {
         onClick={() => setShowSearch(!showSearch)}
         className="absolute right-0.5 bg-secondary p-2.5 rounded-full cursor-pointer z-10 hover:bg-border transition-colors"
       >
-        <FaSearch className="text-xl" />
+        <Search className="text-xl" />
       </div>
     </div>
   );

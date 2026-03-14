@@ -12,12 +12,7 @@ const Categories = () => {
 
   return (
     <Container className="pt-16 pb-6">
-      <Title
-        title={"Category"}
-        subtitle={"List"}
-        className={"pb-10"}
-        description={"Check out our category list"}
-      />
+      <Title title={"Category"} subtitle={"List"} className={"pb-10"} description={"Check out our category list"} />
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-6">
         {categories.map((cat, inx) => (
