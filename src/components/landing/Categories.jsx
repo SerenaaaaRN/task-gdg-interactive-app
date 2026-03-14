@@ -1,7 +1,9 @@
-import { categories } from "../constant/categories";
-import Title from "./Title";
-import Container from "./ui/Container";
+// @ts-check
+
 import { useNavigate } from "react-router-dom";
+import Container from "../ui/Container";
+import Title from "../ui/Title";
+import { categories } from "../../constant/categories";
 
 const CATEGORY_COLORS = ["bg-[#f4efe6]", "bg-[#e8eceb]", "bg-[#f5e6e6]"];
 
@@ -10,7 +12,12 @@ const Categories = () => {
 
   return (
     <Container className="pt-16 pb-6">
-      <Title title1={"Category"} title2={"List"} titleStyles={"pb-10"} paraStyles={"hidden"} />
+      <Title
+        title={"Category"}
+        subtitle={"List"}
+        className={"pb-10 hidden"}
+        description={"Check out our category list"}
+      />
 
       <div className="flex gap-6 lg:gap-9 flex-wrap">
         {categories.map((cat, inx) => (

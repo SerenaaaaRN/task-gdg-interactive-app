@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import Item from "../Item";
+import Item from "./Item";
 
 const BookSlider = ({ books, fromHero = false, className = "min-h-80" }) => {
   return (

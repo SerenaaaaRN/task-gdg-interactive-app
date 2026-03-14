@@ -1,10 +1,11 @@
 import { TbShoppingBagPlus } from "react-icons/tb";
-import featuredBooksImg from "../assets/featured-books.png";
-import Title from "./Title";
-import Container from "./ui/Container";
-import Button from "./ui/Button";
-import { useShop } from "../hooks/useShop";
 
+import Container from "../ui/Container";
+import Title from "../ui/Title";
+import Button from "../ui/Button";
+
+import { useShop } from "../../hooks/useShop";
+import { dummyBooks as books } from "../../constant/books";
 
 const FeaturedBooks = () => {
   const { featuredBook: book, currency } = useShop();
@@ -17,10 +18,10 @@ const FeaturedBooks = () => {
         {/* left */}
         <aside className="flex-1">
           <Title
-            title1={"Featured"}
-            title2={"Books"}
-            titleStyles={"pb-8"}
-            para={"Browse featured books carefully selected by our experts"}
+            title={"Featured"}
+            subtitle={"Books"}
+            className={"pb-8"}
+            description={"Browse featured books carefully selected by our experts"}
           />
           <div className="flex gap-4 sm:gap-8 sm:bg-white sm:p-6 rounded-2xl shadow-sm border border-transparent sm:border-border">
             <div className="min-w-40 flex items-center justify-center bg-primary p-2 rounded-xl">
@@ -65,10 +66,19 @@ const FeaturedBooks = () => {
         </aside>
 
         {/* right */}
-        <aside
-          className="hidden xl:flex flex-1 bg-center bg-cover bg-no-repeat rounded-2xl ml-8"
-          style={{ backgroundImage: `url(${featuredBooksImg})` }}
-        ></aside>
+        <aside className="hidden xl:flex flex-1 bg-center bg-cover bg-no-repeat rounded-2xl ml-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {books.slice(1, 7).map((b) => (
+              <div key={b._id} className=" bg-primary p-2 rounded-xl items-center justify-center">
+                <img
+                  src={b.image}
+                  alt={b.name}
+                  className="object-contain drop-shadow-md rounded-md group-hover:rotate-3 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </aside>
       </div>
     </Container>
   );

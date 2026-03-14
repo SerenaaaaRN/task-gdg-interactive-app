@@ -1,7 +1,7 @@
 import { TbShoppingBagPlus } from "react-icons/tb";
-import Card from "./ui/Card";
+import Card from "./Card";
 import { useNavigate } from "react-router-dom";
-import { useShop } from "../hooks/useShop";
+import { useShop } from "../../hooks/useShop";
 
 const Item = ({ book, variant = "default" }) => {
   const { currency } = useShop();

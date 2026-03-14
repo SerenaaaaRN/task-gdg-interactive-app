@@ -1,13 +1,12 @@
-import bg from "../assets/bg.png";
-import bgHero from "../assets/bg-hero.png";
+import bg from "../../assets/bg.png";
+import bgHero from "../../assets/bg-hero.png";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import Item from "./Item";
-import Container from "./ui/Container";
-import { useShop } from "../hooks/useShop";
+import { useShop } from "../../hooks/useShop";
+import Container from "../ui/Container";
+import Item from "../ui/Item";
 
 const Hero = () => {
   const { popularBooks } = useShop();

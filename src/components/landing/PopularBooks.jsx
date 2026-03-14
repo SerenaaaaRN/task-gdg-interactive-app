@@ -1,8 +1,9 @@
-import "swiper/css";
-import Title from "./Title";
-import Container from "./ui/Container";
-import { useShop } from "../hooks/useShop";
-import BookSlider from "./ui/BookSlider";
+// @ts-check
+
+import BookSlider from "../ui/BookSlider";
+import Container from "../ui/Container";
+import Title from "../ui/Title";
+import { useShop } from "../../hooks/useShop";
 
 const PopularBooks = () => {
   const { popularBooks } = useShop();
