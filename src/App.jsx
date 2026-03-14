@@ -9,8 +9,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
 
 const App = () => {
   return (

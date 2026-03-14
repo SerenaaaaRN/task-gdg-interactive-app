@@ -1,6 +1,6 @@
-import Container from "../ui/Container";
-import Title from "../ui/Title";
-import Button from "../ui/Button";
+import Container from "../../components/ui/Container";
+import Title from "../../components/ui/Title";
+import Button from "../../components/ui/Button";
 
 import { useShop } from "../../hooks/useShop";
 import { ShoppingBag } from "lucide-react";

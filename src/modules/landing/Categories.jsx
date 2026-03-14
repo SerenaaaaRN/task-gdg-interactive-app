@@ -1,8 +1,6 @@
-// @ts-check
-
 import { useNavigate } from "react-router-dom";
-import Container from "../ui/Container";
-import Title from "../ui/Title";
+import Container from "../../components/ui/Container";
+import Title from "../../components/ui/Title";
 import { categories } from "../../constant/categories";
 
 const CATEGORY_COLORS = ["bg-[#f4efe6]", "bg-[#e8eceb]", "bg-[#f5e6e6]"];

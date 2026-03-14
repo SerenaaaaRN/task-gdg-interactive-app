@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import userImg from "../../assets/user.png";
-import Button from "../ui/Button";
-import { useAuth } from "../../hooks/useAuth";
+import userImg from "../assets/user.png";
+import Button from "../components/ui/Button";
+import { useAuth } from "../hooks/useAuth";
 import { User } from "lucide-react";
 
 const UserMenu = () => {

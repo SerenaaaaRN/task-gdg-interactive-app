@@ -1,7 +1,7 @@
-import Card from "./Card";
 import { useNavigate } from "react-router-dom";
 import { useShop } from "../../hooks/useShop";
 import { ShoppingBag } from "lucide-react";
+import Card from "./Card";
 
 const Item = ({ book, variant = "default" }) => {
   const { currency } = useShop();

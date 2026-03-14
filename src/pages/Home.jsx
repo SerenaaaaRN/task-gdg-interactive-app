@@ -1,11 +1,11 @@
 // @ts-check
 
-import Categories from "../components/landing/Categories";
-import FeaturedBooks from "../components/landing/FeaturedBooks";
-import Hero from "../components/landing/Hero";
-import NewArrivals from "../components/landing/NewArrivals";
-import NewsLetter from "../components/landing/NewsLetter";
-import PopularBooks from "../components/landing/PopularBooks";
+import Categories from "../modules/landing/Categories";
+import FeaturedBooks from "../modules/landing/FeaturedBooks";
+import Hero from "../modules/landing/Hero";
+import NewArrivals from "../modules/landing/NewArrivals";
+import NewsLetter from "../modules/landing/NewsLetter";
+import PopularBooks from "../modules/landing/PopularBooks";
 
 const Home = () => {
   return (

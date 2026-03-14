@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import logoImg from "../../assets/logo.png";
+import logoImg from "../assets/logo.png";
 import Navbar from "./Navbar";
-import Container from "../ui/Container";
-import SearchBar from "../ui/SearchBar";
+import Container from "../components/ui/Container";
+import SearchBar from "../components/ui/SearchBar";
 
-import { useShop } from "../../hooks/useShop";
+import { useShop } from "../hooks/useShop";
 import UserMenu from "./UserMenu";
 import { Menu, ShoppingCart, X } from "lucide-react";
 

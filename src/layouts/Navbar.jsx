@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { navLinks } from "../../constant/navigation";
+import { navLinks } from "../constant/navigation";
 
 const Navbar = ({ setMenuOpened, containerStyles }) => {
   return (

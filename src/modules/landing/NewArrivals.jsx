@@ -1,9 +1,9 @@
 // @ts-check
 
 import { useShop } from "../../hooks/useShop";
-import BookSlider from "../ui/BookSlider";
-import Container from "../ui/Container";
-import Title from "../ui/Title";
+import BookSlider from "../../components/ui/BookSlider";
+import Container from "../../components/ui/Container";
+import Title from "../../components/ui/Title";
 
 const NewArrivals = () => {
   const { newArrivals } = useShop();

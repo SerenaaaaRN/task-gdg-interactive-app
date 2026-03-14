@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import logoImg from "../../assets/logo.png";
-import Container from "../ui/Container";
-import { navLinks } from "../../constant/navigation";
-import { socialLinks } from "../../constant/navigation";
+import logoImg from "../assets/logo.png";
+import Container from "../components/ui/Container";
+import { navLinks } from "../constant/navigation";
+import { socialLinks } from "../constant/navigation";
 import { BookUser, Mail, Map } from "lucide-react";
 
 const Footer = () => (

@@ -1,6 +1,6 @@
-import Button from "../ui/Button";
-import Container from "../ui/Container";
-import Input from "../ui/Input";
+import Button from "../../components/ui/Button";
+import Container from "../../components/ui/Container";
+import Input from "../../components/ui/Input";
 
 const NewsLetter = () => {
   const handleSubmit = (e) => {
