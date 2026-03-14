@@ -15,16 +15,16 @@ const Categories = () => {
       <Title
         title={"Category"}
         subtitle={"List"}
-        className={"pb-10 hidden"}
+        className={"pb-10"}
         description={"Check out our category list"}
       />
 
-      <div className="flex gap-6 lg:gap-9 flex-wrap">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-6">
         {categories.map((cat, inx) => (
           <div
             key={inx}
             onClick={() => navigate(`/shop/${cat.name.toLowerCase()}`)}
-            className="flex items-center justify-center flex-col cursor-pointer group"
+            className="items-center justify-center cursor-pointer group"
           >
             <div
               className={`flex items-center justify-center flex-col h-36 w-36 sm:h-40 sm:w-40 rounded-2xl ${

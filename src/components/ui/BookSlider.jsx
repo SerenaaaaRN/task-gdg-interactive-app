@@ -3,7 +3,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Item from "./Item";
 
-const BookSlider = ({ books, fromHero = false, className = "min-h-80" }) => {
+const BookSlider = ({ books, fromHero = "", className = "min-h-80" }) => {
   return (
     <Swiper
       autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -18,7 +18,7 @@ const BookSlider = ({ books, fromHero = false, className = "min-h-80" }) => {
     >
       {books.map((book) => (
         <SwiperSlide key={book._id}>
-          <Item book={book} fromHero={fromHero} />
+          <Item book={book} variant={fromHero} />
         </SwiperSlide>
       ))}
     </Swiper>

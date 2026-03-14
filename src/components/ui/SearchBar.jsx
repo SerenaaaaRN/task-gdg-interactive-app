@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Input from "./Input";
+import { useShop } from "../../hooks/useShop";
 
 const SearchBar = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const { setSearchTerm } = useShop();
 
   return (
     <div className="relative hidden xl:flex items-center">
@@ -12,7 +14,12 @@ const SearchBar = () => {
           showSearch ? "w-66.5 opacity-100" : "w-0 opacity-0 overflow-hidden"
         }`}
       >
-        <Input type="text" placeholder="Search book..." className="w-full pr-10" />
+        <Input
+          type="text"
+          placeholder="Search book..."
+          className="w-full pr-10"
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
       <div
         onClick={() => setShowSearch(!showSearch)}

@@ -5,12 +5,11 @@ import Title from "../ui/Title";
 import Button from "../ui/Button";
 
 import { useShop } from "../../hooks/useShop";
-import { dummyBooks as books } from "../../constant/books";
 
 const FeaturedBooks = () => {
-  const { featuredBook: book, currency } = useShop();
+  const { featuredBook, books, currency } = useShop();
 
-  if (!book) return null;
+  if (!featuredBook) return null;
 
   return (
     <Container className="py-16">
@@ -26,20 +25,20 @@ const FeaturedBooks = () => {
           <div className="flex gap-4 sm:gap-8 sm:bg-white sm:p-6 rounded-2xl shadow-sm border border-transparent sm:border-border">
             <div className="min-w-40 flex items-center justify-center bg-primary p-2 rounded-xl">
               <img
-                src={book.image}
-                alt={book.name}
+                src={featuredBook.image}
+                alt={featuredBook.name}
                 className="h-64 w-44 object-contain mix-blend-multiply drop-shadow-sm"
               />
             </div>
             <div className="flex flex-col justify-between py-2">
               <div className="space-y-1">
-                <h3 className="text-2xl font-bold text-dark-surface line-clamp-2 leading-tight">{book.name}</h3>
-                <p className="text-sm font-medium text-accent">{book.category}</p>
+                <h3 className="text-2xl font-bold text-dark-surface line-clamp-2 leading-tight">{featuredBook.name}</h3>
+                <p className="text-sm font-medium text-accent">{featuredBook.category}</p>
               </div>
               <div className="flex items-center gap-3 mt-4">
                 <h4 className="text-xl font-bold text-dark-surface">
                   {currency}
-                  {book.offerPrice}
+                  {featuredBook.offerPrice}
                 </h4>
               </div>
               <div className="mt-4 text-text-muted text-sm space-y-1">
@@ -56,7 +55,7 @@ const FeaturedBooks = () => {
                   <span className="font-medium text-text-main">Stock: </span>In Stock
                 </p>
               </div>
-              <p className="mt-4 text-text-muted text-sm line-clamp-3 leading-relaxed">{book.description}</p>
+              <p className="mt-4 text-text-muted text-sm line-clamp-3 leading-relaxed">{featuredBook.description}</p>
               <Button variant="primary" className="mt-6 w-fit flex items-center gap-2">
                 <TbShoppingBagPlus className="text-xl" />
                 Add to Cart

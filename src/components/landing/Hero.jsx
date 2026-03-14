@@ -26,9 +26,7 @@ const Hero = () => {
           <h2 className="capitalize text-2xl lg:text-3xl tracking-wider mt-4">Up to 40% off This week</h2>
           <p className="max-w-xl pt-5 text-gray-700 text-sm md:text-base leading-relaxed">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ipsa doloremque itaque, eligendi error
-            laudantium libero quidem esse. Voluptates adipisci ex quis cumque aperiam distinctio. Consequuntur
-            exercitationem harum dicta praesentium illo aliquam reprehenderit iure, earum quasi? Voluptatem cumque
-            veritatis corporis.
+            laudantium libero quidem esse. Voluptates adipisci ex quis cumque aperiam distinctio.
           </p>
           <div className="flex mt-8">
             <Link
