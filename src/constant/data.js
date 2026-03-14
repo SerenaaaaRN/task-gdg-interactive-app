@@ -91,7 +91,7 @@ export const categories = [
 ];
 
 export const dummyBooks = [
- // Academic (6)
+  // Academic (6)
   {
     _id: "1",
     name: "Foundations of Science",
@@ -227,7 +227,7 @@ export const dummyBooks = [
     inStock: true,
   },
 
-    // Health (6)
+  // Health (6)
   {
     _id: "13",
     name: "Healthy Living Guide",
@@ -565,9 +565,8 @@ export const dummyBooks = [
     date: 1716634345448,
     popular: false,
     inStock: true,
-  }
+  },
 ];
-
 
 export const dummyAddress = [
   {
@@ -585,8 +584,6 @@ export const dummyAddress = [
   },
 ];
 
-
-
 export const blogs = [
   {
     title: "10 Must-Read Academic Books for 2024",
@@ -598,10 +595,10 @@ export const blogs = [
     category: "History",
     image: blog2,
   },
-  { 
-    title: "Top Horror Novels That Will Keep You Up All Night", 
-    category: "Horror", 
-    image: blog3 
+  {
+    title: "Top Horror Novels That Will Keep You Up All Night",
+    category: "Horror",
+    image: blog3,
   },
   {
     title: "Best Adventure Books to Fuel Your Wanderlust",
@@ -695,4 +692,3 @@ export const dummyOrders = [
     createdAt: "2024-06-08T15:30:00.000Z",
   },
 ];
-

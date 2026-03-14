@@ -1,12 +1,12 @@
-import { categories } from "../assets/data";
+import { categories } from "../constant/categories";
 import Title from "./Title";
 import Container from "./ui/Container";
-import { useShop } from "../context/ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const CATEGORY_COLORS = ["bg-[#f4efe6]", "bg-[#e8eceb]", "bg-[#f5e6e6]"];
 
 const Categories = () => {
-  const { navigate } = useShop();
+  const navigate = useNavigate();
 
   return (
     <Container className="pt-16 pb-6">

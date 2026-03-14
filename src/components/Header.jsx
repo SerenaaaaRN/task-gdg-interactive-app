@@ -1,24 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoImg from "../assets/logo.png";
 import userImg from "../assets/user.png";
 import Navbar from "./Navbar";
 import Button from "./ui/Button";
-import Input from "./ui/Input";
 import Container from "./ui/Container";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { RiUserLine } from "react-icons/ri";
-import { useShop } from "../context/ShopContext";
+import SearchBar from "./ui/SearchBar";
+import { useAuth } from "../hooks/useAuth";
+import { useShop } from "../hooks/useShop";
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
-  // useShop replaces direct useContext(ShopContext). navigate comes from context,
-  // so useNavigate from react-router-dom is no longer needed here.
-  const { navigate, user, setUser } = useShop();
+  const navigate = useNavigate();
+  const { user, setUser } = useAuth();
+  const { cartItems } = useShop();
 
-  // Rule 5.8: Put interaction logic in event handlers, not effects.
   const toggleMenu = () => setMenuOpened((prev) => !prev);
 
   return (
@@ -28,7 +27,7 @@ const Header = () => {
         <Link to="/" className="text-2xl xl:text-3xl font-bold flex items-end gap-1">
           <img src={logoImg} alt="" className="hidden sm:block h-9" />
           <div className="sm:relative top-1.5 flex items-baseline">
-            Rillah Book <span className="text-[var(--color-accent)] text-4xl leading-none">.</span>
+            Rillah Book <span className="text-accent text-4xl leading-none">.</span>
           </div>
         </Link>
       </div>
@@ -46,26 +45,7 @@ const Header = () => {
       </div>
 
       <div className="flex sm:flex-1 items-center sm:justify-end gap-x-4 sm:gap-x-8">
-        {/* search bar */}
-        <div className="relative hidden xl:flex items-center">
-          <div
-            className={`transition-all duration-300 ease-in-out ${
-              showSearch ? "w-66.5 opacity-100" : "w-0 opacity-0 overflow-hidden"
-            }`}
-          >
-            <Input
-              type="text"
-              placeholder="Search book..."
-              className="w-full pr-10"
-            />
-          </div>
-          <div
-            onClick={() => setShowSearch((prev) => !prev)}
-            className="absolute right-0.5 bg-[var(--color-secondary)] p-2.5 rounded-full cursor-pointer z-10 hover:bg-[var(--color-border)] transition-colors"
-          >
-            <FaSearch className="text-xl" />
-          </div>
-        </div>
+        <SearchBar />
 
         {/* mobile menu toggle */}
         <>
@@ -81,8 +61,8 @@ const Header = () => {
       <Link to="/cart" className="flex relative">
         <div>
           Cart
-          <span className="bg-[var(--color-dark-surface)] text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flex justify-center items-center w-4 h-4 rounded-full shadow-md">
-            0
+          <span className="bg-dark-surface text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flex justify-center items-center w-4 h-4 rounded-full shadow-md">
+            {cartItems?.length || 0}
           </span>
         </div>
       </Link>
@@ -91,7 +71,7 @@ const Header = () => {
       <div className="group relative">
         <div>
           {user ? (
-            <div className="flex gap-2 items-center cursor-pointer rounded-full bg-white border border-[var(--color-border)] p-1">
+            <div className="flex gap-2 items-center cursor-pointer rounded-full bg-white border border-border p-1">
               <img src={userImg} alt="userImg" height={40} width={40} className="rounded-full" />
             </div>
           ) : (
@@ -102,16 +82,16 @@ const Header = () => {
         </div>
 
         {/* dropdown */}
-        {user && (
-          <ul className="bg-white p-2 w-32 border border-[var(--color-border)] rounded-xl absolute right-0 top-12 hidden group-hover:flex flex-col text-sm font-medium shadow-md z-50">
-            <li onClick={() => navigate("/my-orders")} className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer">
+        {user ? (
+          <ul className="bg-white p-2 w-32 border border-border rounded-xl absolute right-0 top-12 hidden group-hover:flex flex-col text-sm font-medium shadow-md z-50">
+            <li onClick={() => navigate("/my-orders")} className="p-2 rounded-md hover:bg-secondary cursor-pointer">
               Orders
             </li>
-            <li onClick={() => setUser(null)} className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer">
+            <li onClick={() => setUser(null)} className="p-2 rounded-md hover:bg-secondary cursor-pointer">
               Logout
             </li>
           </ul>
-        )}
+        ) : null}
       </div>
     </Container>
   );

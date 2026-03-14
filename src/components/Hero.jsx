@@ -7,7 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Item from "./Item";
 import Container from "./ui/Container";
-import { useShop } from "../context/ShopContext";
+import { useShop } from "../hooks/useShop";
 
 const Hero = () => {
   const { popularBooks } = useShop();
@@ -63,7 +63,7 @@ const Hero = () => {
               >
                 {popularBooks.map((book) => (
                   <SwiperSlide key={book._id}>
-                    <Item book={book} fromHero={true} />
+                    <Item book={book} variant="hero" />
                   </SwiperSlide>
                 ))}
               </Swiper>

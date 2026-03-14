@@ -1,14 +1,13 @@
-const Title = ({ title1, title2, titleStyles, title1Styles, paraStyles, para }) => {
+const Title = ({ title, subtitle, description, className = "" }) => {
   return (
-    <div className={`${titleStyles} pb-4`}>
-      <h3 className={`${title1Styles} text-3xl md:text-4xl font-bold text-[var(--color-dark-surface)] capitalize`}>
-        {title1}
-        <span className="font-light italic text-[var(--color-accent)] ml-2">{title2}</span>
+    <div className={`pb-4 ${className}`}>
+      <h3 className="text-3xl md:text-4xl font-bold text-dark-surface capitalize">
+        {title}
+        {subtitle && <span className="font-light italic text-accent ml-2">{subtitle}</span>}
       </h3>
-      <p className={`${paraStyles} max-w-[500px] mt-4 text-[var(--color-text-muted)] text-sm md:text-base leading-relaxed`}>
-        {para
-          ? para
-          : "Discover books that spark curiosity, deliver quality, and bring inspiration to your everyday reading."}
+      <p className="max-w-125 mt-4 text-text-muted text-sm md:text-base leading-relaxed">
+        {description ||
+          "Discover books that spark curiosity, deliver quality, and bring inspiration to your everyday reading."}
       </p>
     </div>
   );
