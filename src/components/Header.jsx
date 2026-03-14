@@ -2,6 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import logoImg from "../assets/logo.png";
 import userImg from "../assets/user.png";
 import Navbar from "./Navbar";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
+import Container from "./ui/Container";
 
 import { useContext, useState } from "react";
 import { FaBars, FaSearch } from "react-icons/fa";
@@ -17,13 +20,13 @@ const Header = () => {
   const toggleMenu = () => setMenuOpened((prev) => !prev);
 
   return (
-    <header className="absolute top-0 left-0 right-0 max-padd-container flexBetween gap-4 py-2">
+    <Container className="absolute top-0 left-0 right-0 flex justify-between items-center gap-4 py-2 z-50">
       {/* logo */}
       <div className="flex flex-1">
-        <Link to="/" className="bold-22 xl:bold-28 flex items-end gap-1">
+        <Link to="/" className="text-2xl xl:text-3xl font-bold flex items-end gap-1">
           <img src={logoImg} alt="" className="hidden sm:block h-9" />
-          <div className="sm:relative top-1.5">
-            Rillah Book <span className="text-secondary">a.</span>
+          <div className="sm:relative top-1.5 flex items-baseline">
+            Rillah Book <span className="text-[var(--color-accent)] text-4xl leading-none">.</span>
           </div>
         </Link>
       </div>
@@ -34,8 +37,8 @@ const Header = () => {
           setMenuOpened={setMenuOpened}
           containerStyles={`${
             menuOpened
-              ? "flex items-start flex-col gap-y-8 fixed top-16 right-6 p-5 bg-white rounded-xl shadow-md w-52 ring-1 ring-slate-900/5 z-50"
-              : "hidden lg:flex gap-x-5 xl:gap-x-7 medium-15 ring-1 ring-1 ring-slate-900/15 rounded-full p-1 bg-primary"
+              ? "flex items-start flex-col gap-y-8 fixed top-16 right-6 p-5 bg-white rounded-xl shadow-md w-52 border border-[var(--color-border)] z-50"
+              : "hidden lg:flex gap-x-5 xl:gap-x-7 font-medium text-[15px] border border-[var(--color-border)] rounded-full px-4 py-1.5 bg-[var(--color-secondary)]"
           }`}
         />
       </div>
@@ -44,19 +47,19 @@ const Header = () => {
         {/* search bar */}
         <div className="relative hidden xl:flex items-center">
           <div
-            className={`bg-white ring-1 ring-slate-900/10  rounded-full overflow-hidden transition-all duration-300 ease-in-out ${
-              showSearch ? "w-66.5 opacity-100 px-4 py-2.5" : "w-0 opacity-0 p-0"
+            className={`transition-all duration-300 ease-in-out ${
+              showSearch ? "w-66.5 opacity-100" : "w-0 opacity-0 overflow-hidden"
             }`}
           >
-            <input
+            <Input
               type="text"
               placeholder="Search book..."
-              className="bg-transparent w-full text-sm outline-none pr-10 placeholder:text-gray-400"
+              className="w-full pr-10"
             />
           </div>
           <div
             onClick={() => setShowSearch((prev) => !prev)}
-            className="absolute right-0.5 bg-primary p-2.5 rounded-full cursor-pointer z-10"
+            className="absolute right-0.5 bg-[var(--color-secondary)] p-2.5 rounded-full cursor-pointer z-10 hover:bg-[var(--color-border)] transition-colors"
           >
             <FaSearch className="text-xl" />
           </div>
@@ -76,7 +79,7 @@ const Header = () => {
       <Link to="/cart" className="flex relative">
         <div>
           Cart
-          <span className="bg-secondary text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flexCenter w-4 h-4 rounded-full shadow-md">
+          <span className="bg-[var(--color-dark-surface)] text-white text-[12px] font-semibold absolute -top-3.5 -right-2 flex justify-center items-center w-4 h-4 rounded-full shadow-md">
             0
           </span>
         </div>
@@ -86,27 +89,27 @@ const Header = () => {
       <div className="group relative">
         <div>
           {user ? (
-            <div className="flex gap-2 items-center cursor-pointer rounded-full bg-white">
-              <img src={userImg} alt="userImg" height={44} width={44} />
+            <div className="flex gap-2 items-center cursor-pointer rounded-full bg-white border border-[var(--color-border)] p-1">
+              <img src={userImg} alt="userImg" height={40} width={40} className="rounded-full" />
             </div>
           ) : (
-            <button className="btn-light flexCenter gap-x-2">
+            <Button variant="outline" className="flex justify-center items-center gap-x-2">
               Login <RiUserLine className="text-xl" />
-            </button>
+            </Button>
           )}
         </div>
 
         {/* dropdown */}
         {user && (
-          <ul className="bg-white p-2 w-32 ring-1 ring-slate-900/5 rounded absolute right-0 top-10 hidden group-hover:flex flex-col medium-14 shadow-md z-50">
-            <li onClick={() => navigate("/my-orders")} className="p-2 rounded-md hover:bg-primary cursor-pointer">
+          <ul className="bg-white p-2 w-32 border border-[var(--color-border)] rounded-xl absolute right-0 top-12 hidden group-hover:flex flex-col text-sm font-medium shadow-md z-50">
+            <li onClick={() => navigate("/my-orders")} className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer">
               Orders
             </li>
-            <li className="p-2 rounded-md hover:bg-primary cursor-pointer"></li>
+            <li className="p-2 rounded-md hover:bg-[var(--color-secondary)] cursor-pointer"></li>
           </ul>
         )}
       </div>
-    </header>
+    </Container>
   );
 };
 

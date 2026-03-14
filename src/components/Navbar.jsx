@@ -14,14 +14,15 @@ const Navbar = ({ setMenuOpened, containerStyles }) => {
     <nav className={containerStyles}>
       {navItems.map(({ to, label, icon }) => (
         <NavLink
+          key={label}
           onClick={() => setMenuOpened(false)}
           to={to}
           className={({ isActive }) =>
-            `${isActive ? "bg-white ring-1 ring-slate-900/10" : ""} flexCenter gap-x-2 px-3 py-1.5 rounded-full`
+            `${isActive ? "bg-[var(--color-primary)] text-[var(--color-dark-surface)] shadow-sm font-semibold" : "text-[var(--color-text-main)] hover:bg-[var(--color-border)]"} flex items-center gap-x-2 px-4 py-2 rounded-full transition-colors`
           }
         >
           <span className="text-xl">{icon}</span>
-          <span className="medium-16">{label}</span>
+          <span className="font-medium text-base">{label}</span>
         </NavLink>
       ))}
     </nav>

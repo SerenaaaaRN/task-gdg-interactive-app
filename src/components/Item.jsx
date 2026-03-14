@@ -1,31 +1,32 @@
 import { useContext } from "react";
 import { TbShoppingBagPlus } from "react-icons/tb";
 import { ShopContext } from "../context/ShopContext";
+import Card from "./ui/Card";
 
 const Item = ({ book, fromHero }) => {
   const { navigate, currency } = useContext(ShopContext);
 
   return book ? (
-    <div className={`overflow-hidden sm:p-4 ${fromHero ? "bg-white" : "sm:bg-primary"} rounded-xl `}>
-      <div className="overflow-hidden rounded-xl shadow-[0px_0px_2px_0px_rgba(0,0,0,0.1)]">
-        <img src={book.image} alt="book.name" className="rounded-lg" />
+    <Card className={fromHero ? "bg-[var(--color-primary)] border-transparent" : "m-2"}>
+      <div className="overflow-hidden bg-[var(--color-border)] rounded-t-2xl flex items-center justify-center p-4 h-[280px]">
+        <img src={book.image} alt={book.name} className="object-contain h-full mix-blend-multiply drop-shadow-sm" />
       </div>
-      <div className="pt-4">
-        <div className="flexBetween gap-2">
-          <h4 className="h5 line-clamp-1">{book.name}</h4>
-          <p className="text-secondary bold-15">
+      <div className="p-5 flex flex-col gap-3">
+        <div className="flex justify-between items-start gap-2">
+          <h4 className="font-semibold text-lg leading-tight line-clamp-2">{book.name}</h4>
+          <p className="text-[var(--color-accent)] font-bold text-lg whitespace-nowrap">
             {currency}
             {book.offerPrice}.00
           </p>
         </div>
-        <div className="flex justify-between items-start gap-2 mt-1">
-          <p className="line-clamp-1">{book.description}</p>
-          <button className="cursor-pointer">
-            <TbShoppingBagPlus className="text-xl" />
+        <div className="flex justify-between items-end gap-2 mt-auto">
+          <p className="line-clamp-2 text-sm text-[var(--color-text-muted)] leading-relaxed">{book.description}</p>
+          <button className="text-[var(--color-text-main)] hover:text-white transition-colors p-2.5 bg-[var(--color-secondary)] hover:bg-[var(--color-dark-surface)] rounded-full shrink-0">
+            <TbShoppingBagPlus className="text-[22px]" />
           </button>
         </div>
       </div>
-    </div>
+    </Card>
   ) : (
     <div className="p-5 text-red-600 text-sm rounded-md">No found book</div>
   );
