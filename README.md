@@ -1,16 +1,28 @@
-# React + Vite
+# React Book Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A platform for selling books with a wide variety of titles; this is a dummy project I created while learning how to manage state in React. Built with a clean UI and responsive design, it features a dynamic book catalog.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework:** React 19 (Vite)
+- **Routing:** React Router DOM
+- **Styling:** Tailwind CSS 
+- **State Management:** React Context API
+- **UI Components:** Swiper (Carousel/Slider), Lucide React (Icons), React Hot Toast (Notifications)
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├───assets          Static assets like images and logos
+├───components      Reusable UI components
+│   └───ui
+├───constant        Dummy data and static configurations
+├───context         Global state management 
+├───hooks           Custom React hooks
+├───layouts         Application layout components
+├───modules         Section-specific components
+│   ├───landing
+│   └───shop
+└───pages           Main route components 
+```
