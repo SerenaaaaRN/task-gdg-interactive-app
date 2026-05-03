@@ -17,38 +17,31 @@ const Cart = () => {
       </SectionHeader>
 
       {cartItems.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-24 text-center animate-fade-in-up">
-          <div className="mb-8 flex h-28 w-28 items-center justify-center rounded-full bg-secondary shadow-warm">
+        <div className="animate-fade-in-up flex flex-col items-center justify-center py-24 text-center">
+          <div className="bg-secondary shadow-warm mb-8 flex h-28 w-28 items-center justify-center rounded-full">
             <ShoppingCart size={40} className="text-muted-foreground" />
           </div>
           <h2 className="mb-3 text-3xl font-bold">Your cart is empty</h2>
           <p className="text-muted-foreground mb-10 max-w-sm text-base leading-relaxed">
-            Looks like you haven't added any books to your cart yet. Discover our curated collection and find your next read.
+            Looks like you haven't added any books to your cart yet. Discover our curated collection and find your next
+            read.
           </p>
-          <Button
-            variant="accent"
-            size="lg"
-            onClick={() => navigate("/shop")}
-            className="flex items-center gap-3"
-          >
+          <Button variant="accent" size="lg" onClick={() => navigate("/shop")} className="flex items-center gap-3">
             Start Shopping
             <ArrowRight size={18} />
           </Button>
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="rounded-2xl border border-border bg-background shadow-warm-sm">
-            {cartItems.map((_, index: number) => (
-              <div
-                key={index}
-                className="flex items-center gap-6 border-b border-border p-6 last:border-b-0"
-              >
-                <div className="flex h-20 w-16 items-center justify-center rounded-lg bg-secondary p-2">
-                  <BookOpen className="size-6 text-muted-foreground" />
+          <div className="border-border bg-background shadow-warm-sm rounded-2xl border">
+            {cartItems.map((item) => (
+              <div key={item.book._id} className="border-border flex items-center gap-6 border-b p-6 last:border-b-0">
+                <div className="bg-secondary flex h-20 w-16 items-center justify-center rounded-lg p-2">
+                  <BookOpen className="text-muted-foreground size-6" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold">Book Item</h4>
-                  <p className="text-sm text-muted-foreground">Quantity: 1</p>
+                  <h4 className="font-bold">{item.book.title}</h4>
+                  <p className="text-muted-foreground text-sm">{item.quantity}</p>
                 </div>
                 <Button variant="ghost" size="sm">
                   <Trash2 className="size-4" />
@@ -56,7 +49,7 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <p className="text-center text-muted-foreground">
+          <p className="text-muted-foreground text-center">
             You have {cartItems.length} item{cartItems.length !== 1 ? "s" : ""} in your cart.
           </p>
         </div>

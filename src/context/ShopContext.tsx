@@ -1,7 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { createContext, use, useMemo, useState, Suspense, type ReactNode } from "react";
 import type { Book } from "@/types";
+import type { Item } from "@/types";
 
 type ShopContextType = {
   books: Book[];
@@ -11,8 +12,8 @@ type ShopContextType = {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   currency: string;
-  cartItems: any[];
-  setCartItems: (items: any[]) => void;
+  cartItems: Item[];
+  setCartItems: (items: Item[]) => void;
 };
 
 export const ShopContext = createContext<ShopContextType | null>(null);
@@ -40,7 +41,7 @@ export const ShopContextProvider = ({ children }: { children: ReactNode }) => {
 
   const [books] = useState<Book[]>(booksData);
   const [category, setCategory] = useState("All");
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<Item[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const currency = "Rp";
 

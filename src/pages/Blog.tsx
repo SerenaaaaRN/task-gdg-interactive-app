@@ -3,10 +3,10 @@ import { SectionHeader, SHTitle, SHDescription } from "@/components/common/Secti
 import { blogs } from "@/constant/blogs";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
-import type { Blog } from "@/types";
+import type { blog } from "@/types";
 import { cn } from "@/lib/utils";
 
-const BlogCard = ({ blog, isHero = false }: { blog: Blog; isHero?: boolean }) => {
+const BlogCard = ({ blog, isHero = false }: { blog: blog; isHero?: boolean }) => {
   return (
     <article className={cn("group cursor-pointer", isHero ? "md:col-span-2 lg:col-span-3" : "")}>
       <div className={`mb-5 overflow-hidden rounded-2xl ${isHero ? "h-80 md:h-96" : "h-64"}`}>
