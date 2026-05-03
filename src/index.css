@@ -1,35 +1,254 @@
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #fdfaf6;
-  --color-secondary: #f0ebe1;
-  --color-accent: #d97757;
-  --color-text-main: #333333;
-  --color-text-muted: #6b6b6b;
-  --color-border: #e6e0d4;
+  --font-serif: "Crimson Pro", serif;
 
-  --color-dark-surface: #2b2a27;
-  --color-dark-text: #f5f3ef;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --color-dark-surface: #2b2520;
+  --color-dark-text: #faf8f4;
+
+  --color-gold: var(--gold);
+
+  --radius: var(--radius);
+
+  /* Animation tokens */
+  --animate-fade-in-up: fade-in-up 0.6s ease-out both;
+  --animate-fade-in: fade-in 0.5s ease-out both;
+  --animate-slide-in-right: slide-in-right 0.4s ease-out both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
 }
 
-html,
-body {
-  background-color: var(--color-primary);
-  color: var(--color-text-main);
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  font-family: "Crimson Pro", serif;
+:root {
+  --background: #faf8f4;
+  --foreground: #1c1a17;
+  --primary: #2b2520;
+  --primary-foreground: #faf8f4;
+  --secondary: #f0ebe1;
+  --secondary-foreground: #2b2520;
+  --accent: #c45d3e;
+  --accent-foreground: #ffffff;
+  --muted: #ede8de;
+  --muted-foreground: #7a756c;
+  --border: #e2dbd0;
+  --ring: #c45d3e;
+  --gold: #b8953f;
+  --radius: 0.75rem;
 }
 
-/* width */
-::-webkit-scrollbar {
-  display: none;
+.dark {
+  --background: #141210;
+  --foreground: #ede8de;
+  --primary: #ede8de;
+  --primary-foreground: #1c1a17;
+  --secondary: #221f1b;
+  --secondary-foreground: #ede8de;
+  --accent: #d4735a;
+  --accent-foreground: #141210;
+  --muted: #221f1b;
+  --muted-foreground: #8a847a;
+  --border: #332e28;
+  --ring: #d4735a;
+  --gold: #c9a54e;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* ── Keyframe Animations ── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ── Base Layer ── */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-serif antialiased;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+/* ── Noise Texture Overlay ── */
+
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Decorative Ornament ── */
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.ornament-icon {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+}
+
+/* ── Custom Scrollbar ── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--background);
+}
+
+/* ── Warm Shadows ── */
+
+.shadow-warm-sm {
+  box-shadow: 0 1px 3px rgba(43, 37, 32, 0.06), 0 1px 2px rgba(43, 37, 32, 0.04);
+}
+
+.shadow-warm {
+  box-shadow: 0 4px 12px rgba(43, 37, 32, 0.08), 0 2px 4px rgba(43, 37, 32, 0.04);
+}
+
+.shadow-warm-lg {
+  box-shadow: 0 8px 30px rgba(43, 37, 32, 0.12), 0 4px 8px rgba(43, 37, 32, 0.06);
+}
+
+.shadow-warm-xl {
+  box-shadow: 0 16px 48px rgba(43, 37, 32, 0.14), 0 8px 16px rgba(43, 37, 32, 0.08);
+}
+
+/* Dark mode warm shadows */
+.dark .shadow-warm-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.dark .shadow-warm {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.dark .shadow-warm-lg {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark .shadow-warm-xl {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35), 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Stagger Animation Delays ── */
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* ── Underline Hover Effect ── */
+
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
 }
